@@ -11,12 +11,12 @@ import {
  Your initial/default state for this project could *Although does not have to* look a lot like this
 */
 const initialState = {
-   smurfs: [],
-   fetchingSmurfs: false,
-   addingSmurf: false,
-   updatingSmurf: false,
-   deletingSmurf: false,
-   error: null
+  smurfsList: [],
+  fetchingSmurfs: false,
+  addingSmurf: false,
+  updatingSmurf: false,
+  deletingSmurf: false,
+  error: null
 };
 
 export default (state = initialState, action) => {
@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
         ...state,
         addingSmurf: false,
         error: null,
-        smurfs: action.payload
+        smurfsList: action.payload
       };
     case ADD_SMURF_FAILURE:
       return {
@@ -61,5 +61,5 @@ export default (state = initialState, action) => {
       };
     default:
       return state;
-  };
+  }
 };

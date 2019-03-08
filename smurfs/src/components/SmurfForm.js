@@ -15,7 +15,11 @@ const SmurfForm = ({ dispatch }) => {
             className="smurf-form"
             onSubmit={event => {
                 event.preventDefault();
-                dispatch(addSmurf(ageInput, heightInput, nameInput));
+                dispatch(addSmurf(
+                    ageInput.value,
+                    heightInput.value,
+                    nameInput.value)
+                );
                 smurfForm.reset();
             }}
             ref={node => smurfForm = node}

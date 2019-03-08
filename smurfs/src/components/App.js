@@ -13,11 +13,10 @@ class App extends Component {
   }
 
   render() {
-    console.log('fetchingSmurfs', this.props.fetchingSmurfs);
     return (
       <div className="App">
         <header>
-          { this.props.error ? <p className="error">{this.props.error}</p> : null }
+          { this.props.error ? <p className="error"><strong>Error:</strong> {this.props.error.toString()}</p> : null }
           <h1>SMURFS! 2.0 W/ Redux</h1>
         </header>
         <SmurfForm />
@@ -33,6 +32,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log('state.error', state.error);
   return {
     addingSmurf: state.addingSmurf,
     error: state.error,
