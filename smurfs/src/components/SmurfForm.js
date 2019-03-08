@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { addSmurf } from '../actions';
@@ -15,6 +15,7 @@ const SmurfForm = ({ dispatch }) => {
             className="smurf-form"
             onSubmit={event => {
                 event.preventDefault();
+                console.log('smurfForm submit');
                 dispatch(addSmurf(
                     ageInput.value,
                     heightInput.value,

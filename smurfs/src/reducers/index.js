@@ -2,6 +2,9 @@ import {
   ADD_SMURF_FAILURE,
   ADD_SMURF_START,
   ADD_SMURF_SUCCESS,
+  DELETE_SMURF_FAILURE,
+  DELETE_SMURF_START,
+  DELETE_SMURF_SUCCESS,
   FETCH_SMURFS_FAILURE,
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS
@@ -39,7 +42,26 @@ export default (state = initialState, action) => {
         ...state,
         addingSmurf: false,
         error: action.payload
-      }
+      };
+      case DELETE_SMURF_START:
+        return {
+          ...state,
+          deletingSmurf: true,
+          error: null
+        };
+      case DELETE_SMURF_SUCCESS:
+        return {
+          ...state,
+          deletingSmurf: false,
+          error: null,
+          smurfsList: action.payload
+        };
+      case DELETE_SMURF_FAILURE:
+        return {
+          ...state,
+          deletingSmurf: false,
+          error: action.payload
+        };
     case FETCH_SMURFS_START:
       return {
         ...state,
