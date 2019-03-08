@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './App.css';
 
 import { fetchSmurfs } from '../actions';
+import SmurfForm from './SmurfForm';
 import SmurfsList from './SmurfsList';
 
 class App extends Component {
@@ -19,10 +20,11 @@ class App extends Component {
           { this.props.error ? <p className="error">{this.props.error}</p> : null }
           <h1>SMURFS! 2.0 W/ Redux</h1>
         </header>
-        {this.props.smurfsList
-          ? <SmurfsList smurfsList={this.props.smurfsList} />
-          : this.props.fetchingSmurfs
-            ? <h2>Fetching Smurfs!</h2> 
+        <SmurfForm />
+        {this.props.fetchingSmurfs || this.props.addingSmurf
+          ? <h2>Fetching Smurfs!</h2> 
+          : this.props.smurfsList
+            ? <SmurfsList smurfsList={this.props.smurfsList} />
             : <h2>No Smurfs!</h2>
         }
       </div>
@@ -32,6 +34,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
+    addingSmurf: state.addingSmurf,
     error: state.error,
     fetchingSmurfs: state.fetchingSmurfs,
     smurfsList: state.smurfsList
